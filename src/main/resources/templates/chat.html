@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chat Room</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCmO17HQYhvhMYbxzzcsZ0PWCtR5SneC_0Q&s') no-repeat center center fixed;
+            background-size: cover;
+            color: #f0f0f0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: brightness(0.6);
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0,0,0,0.7);
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            padding: 12px 15px;
+            border-radius: 25px;
+            border: none;
+            width: 200px;
+            outline: none;
+            font-size: 1rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            box-shadow: 0 0 8px #1e90ff;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            background: #1e90ff;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #005bb5;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 700px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 400px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            margin: 8px 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+
+        li b {
+            color: #1e90ff;
+            margin-right: 10px;
+        }
+
+        li i {
+            font-style: normal;
+            font-size: 0.8rem;
+            color: #bbb;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Welcome to the Chat Room</h2>
+    <form th:action="@{/send}" method="post" th:object="${message}">
+        <input type="text" th:field="*{username}" placeholder="Your name" required />
+        <input type="text" th:field="*{content}" placeholder="Your message" required />
+        <button type="submit">Send</button>
+    </form>
+
+    <ul>
+        <li th:each="msg : ${messages}">
+            <div><b th:text="${msg.username}">User</b>: <span th:text="${msg.content}">Message</span></div>
+            <i th:text="${#temporals.format(msg.timestamp, 'HH:mm')}">Time</i>
+        </li>
+    </ul>
+</body>
+</html>
