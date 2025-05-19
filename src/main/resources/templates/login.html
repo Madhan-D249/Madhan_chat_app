@@ -7,81 +7,61 @@
 
         body {
             font-family: 'Poppins', Arial, sans-serif;
-            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCmO17HQYhvhMYbxzzcsZ0PWCtR5SneC_0Q&s') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(to bottom right, #141e30, #243b55);
             height: 100vh;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #f0f0f0;
-            backdrop-filter: brightness(0.6);
         }
 
         .login-container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 40px 30px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.7);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
             width: 320px;
         }
 
         h3 {
             text-align: center;
             margin-bottom: 25px;
-            font-weight: 700;
             color: #1e90ff;
-            text-shadow: 0 0 6px rgba(0,0,0,0.5);
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 14px 15px;
+            padding: 12px;
             margin-bottom: 20px;
             border-radius: 30px;
-            border: none;
-            outline: none;
+            border: 1px solid #ddd;
             font-size: 1rem;
-            transition: box-shadow 0.3s ease;
-        }
-
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            box-shadow: 0 0 10px #1e90ff;
+            outline: none;
         }
 
         button {
             width: 100%;
-            padding: 14px;
-            background-color: #1e90ff;
+            padding: 12px;
+            background: #1e90ff;
             border: none;
             color: white;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background 0.3s ease;
         }
 
         button:hover {
-            background-color: #005bb5;
+            background: #005bb5;
         }
 
         .link {
             text-align: center;
-            margin-top: 18px;
+            margin-top: 15px;
         }
 
         .link a {
             color: #28a745;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .link a:hover {
-            color: #1e7e34;
         }
     </style>
 </head>
