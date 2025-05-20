@@ -3,27 +3,25 @@
 <head>
     <title>Register</title>
     <style>
-         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
         body {
             font-family: 'Poppins', Arial, sans-serif;
-            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuCmO17HQYhvhMYbxzzcsZ0PWCtR5SneC_0Q&s') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(to bottom right, #141e30, #243b55);
             height: 100vh;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #f0f0f0;
-            backdrop-filter: brightness(0.6);
         }
 
         .register-container {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.85);
             padding: 40px 30px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.7);
-            width: 320px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            width: 350px;
         }
 
         h3 {
@@ -31,24 +29,29 @@
             margin-bottom: 25px;
             font-weight: 700;
             color: #1e90ff;
-            text-shadow: 0 0 6px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         }
 
         input[type="text"],
-        input[type="password"] {
+        input[type="password"],
+        input[type="email"] {
             width: 100%;
             padding: 14px 15px;
             margin-bottom: 20px;
             border-radius: 30px;
-            border: none;
+            border: 1px solid #ddd;
             outline: none;
             font-size: 1rem;
-            transition: box-shadow 0.3s ease;
+            background: #ffffff;
+            color: #333;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
         }
 
         input[type="text"]:focus,
-        input[type="password"]:focus {
-            box-shadow: 0 0 10px #1e90ff;
+        input[type="password"]:focus,
+        input[type="email"]:focus {
+            border: 1px solid #1e90ff;
+            box-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
         }
 
         button {
@@ -61,11 +64,12 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 1rem;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s;
         }
 
         button:hover {
             background-color: #005bb5;
+            transform: scale(1.03);
         }
 
         .link {
@@ -73,4 +77,38 @@
             margin-top: 18px;
         }
 
-       
+        .link a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .link a:hover {
+            color: #1e7e34;
+        }
+
+        @media screen and (max-width: 768px) {
+            .register-container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h3>Register</h3>
+        <form th:action="@{/register}" method="post">
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="email" name="email" placeholder="Email Address" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <input type="password" name="confirmPassword" placeholder="Confirm Password" required />
+            <button type="submit">Register</button>
+        </form>
+        <div class="link">
+            <a th:href="@{/login}">Already have an account? Login</a>
+        </div>
+    </div>
+</body>
+</html>
